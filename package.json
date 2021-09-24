@@ -46,5 +46,10 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^8.6.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "!src/utils/test-utils.tsx"
+    ]
   }
 }
