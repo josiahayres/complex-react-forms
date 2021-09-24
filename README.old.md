@@ -5,4 +5,8 @@ Example React Project (Typescript) using MUI (Material UI) components, react-hoo
 Install React typescript 
 ```bash static 
 yarn create react-app my-app --template typescript
+
+yarn add @mui/material
+
+yarn add react-hook-form
 ```
