@@ -1,4 +1,5 @@
 import { PaletteMode } from '@mui/material'
+import { red } from '@mui/material/colors'
 import {
   createTheme,
   responsiveFontSizes,
@@ -30,12 +31,12 @@ const getLightDarkPalette = (mode: PaletteMode): ThemeOptions => ({
       : {
           // palette values for dark mode
           primary: {
-            main: '#2B4162',
+            main: '#8EA7CD',
           },
           secondary: {
-            main: '#07A0C3',
+            main: '#046176',
           },
-
+          error: { main: red[300] },
           divider: '#02313C',
           background: {
             default: '#012128',
@@ -76,6 +77,13 @@ let baseTheme = createTheme({
     MuiTextField: {
       defaultProps: {
         variant: 'filled',
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'capitalize',
+        },
       },
     },
   },

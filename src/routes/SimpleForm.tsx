@@ -71,17 +71,23 @@ function SimpleForm(): ReactElement {
                 justifyContent="flex-start"
                 alignItems="flex-start"
               >
-                <TextField name="fullName" label="Full name" fullWidth />
+                <Typography variant="h5">Simple Form</Typography>
+                <TextField
+                  name="fullName"
+                  label="Full name"
+                  fullWidth
+                  helperText="test"
+                />
                 <TextField name="email" label="Email address" fullWidth />
                 <Checkbox name="showDevTool" label="Show RHF Dev Tool" />
 
                 <Button
                   type="submit"
                   variant="contained"
-                  color="primary"
+                  color="secondary"
                   size="large"
                 >
-                  Submit
+                  Submit form
                 </Button>
               </Stack>
             </Form>

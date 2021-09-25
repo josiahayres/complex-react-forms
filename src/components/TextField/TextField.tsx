@@ -7,7 +7,14 @@ import { Controller, useFormContext } from 'react-hook-form'
 
 export type TextFieldProps = Omit<MuiProps, 'name'> & { name: string }
 
-function TextField({ name, ...props }: TextFieldProps): ReactElement {
+function TextField({
+  name,
+  InputLabelProps = {},
+  InputProps = {},
+  FormHelperTextProps = {},
+  helperText,
+  ...props
+}: TextFieldProps): ReactElement {
   const { control } = useFormContext()
   return (
     <Controller
@@ -25,7 +32,13 @@ function TextField({ name, ...props }: TextFieldProps): ReactElement {
           inputRef={ref}
           name={name}
           error={invalid}
-          helperText={error?.message}
+          helperText={error?.message || helperText}
+          InputProps={{ id: `TextField_${name}`, ...InputProps }}
+          InputLabelProps={{ htmlFor: `TextField_${name}`, ...InputLabelProps }}
+          FormHelperTextProps={{
+            role: invalid ? 'alert' : 'note',
+            ...FormHelperTextProps,
+          }}
         />
       )}
     />
