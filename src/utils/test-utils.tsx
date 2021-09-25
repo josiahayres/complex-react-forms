@@ -1,10 +1,9 @@
 import { FC, ReactElement } from 'react'
 import { render, RenderOptions } from '@testing-library/react'
-import { ThemeProvider } from '@mui/material'
-import { theme } from '../customTheme'
+import AppProviders from '../AppProviders'
 
 const AllTheProviders: FC = ({ children }) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>
+  return <AppProviders>{children}</AppProviders>
 }
 
 const customRender = (

@@ -1,6 +1,58 @@
-import { createTheme, responsiveFontSizes } from '@mui/material/styles'
+import { PaletteMode } from '@mui/material'
+import {
+  createTheme,
+  responsiveFontSizes,
+  ThemeOptions,
+} from '@mui/material/styles'
 
-let theme = createTheme({
+/**
+ *
+ * @param mode light or dark
+ * @returns colours for light or dark
+ */
+const getLightDarkPalette = (mode: PaletteMode): ThemeOptions => ({
+  palette: {
+    mode,
+    ...(mode === 'light'
+      ? {
+          // palette values for light mode
+          primary: {
+            main: '#2B4162',
+          },
+          secondary: {
+            main: '#07A0C3',
+          },
+          background: {
+            default: '#ECFBFE',
+            paper: '#ECFBFE',
+          },
+        }
+      : {
+          // palette values for dark mode
+          primary: {
+            main: '#2B4162',
+          },
+          secondary: {
+            main: '#07A0C3',
+          },
+
+          divider: '#02313C',
+          background: {
+            default: '#012128',
+            paper: '#012128',
+          },
+          text: {
+            primary: '#fff',
+            secondary: '#EBFBFE',
+          },
+        }),
+  },
+})
+
+/**
+ * Base theme sets shape, typography, and responsive font size
+ */
+let baseTheme = createTheme({
   shape: {
     borderRadius: 10,
   },
@@ -18,24 +70,8 @@ let theme = createTheme({
       '"Segoe UI Symbol"',
     ].join(','),
   },
-  palette: {
-    primary: {
-      main: '#2B4162',
-    },
-    secondary: {
-      main: '#07A0C3',
-    },
-  },
 })
 
-theme = responsiveFontSizes(theme)
+baseTheme = responsiveFontSizes(baseTheme)
 
-theme = createTheme(theme, {
-  palette: {
-    info: {
-      main: theme.palette.secondary.main,
-    },
-  },
-})
-
-export { theme }
+export { baseTheme, getLightDarkPalette }
