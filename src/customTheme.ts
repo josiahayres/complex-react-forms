@@ -50,7 +50,9 @@ const getLightDarkPalette = (mode: PaletteMode): ThemeOptions => ({
 })
 
 /**
- * Base theme sets shape, typography, and responsive font size
+ * Base theme
+ * Sets shape, typography, and responsive font sizes.
+ * Also sets default props for components
  */
 let baseTheme = createTheme({
   shape: {
@@ -69,6 +71,13 @@ let baseTheme = createTheme({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(','),
+  },
+  components: {
+    MuiTextField: {
+      defaultProps: {
+        variant: 'filled',
+      },
+    },
   },
 })
 
