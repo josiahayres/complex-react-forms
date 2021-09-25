@@ -20,7 +20,6 @@ export default function StickyFooter() {
       component="footer"
       sx={{
         py: 3,
-        px: 2,
         mt: 'auto',
         backgroundColor: (theme) =>
           theme.palette.mode === 'light'
@@ -29,7 +28,7 @@ export default function StickyFooter() {
       }}
       data-testid="StickyFooter"
     >
-      <Container maxWidth="sm">
+      <Container maxWidth="lg">
         <Typography variant="body1" data-testid="body">
           Last updated: Sat 25 Sept 2021
         </Typography>

@@ -1,7 +1,9 @@
-import React from 'react'
-import { StickyFooter } from './components'
 import { Box } from '@mui/system'
-import { Typography } from '@mui/material'
+import { Switch, Route } from 'react-router-dom'
+
+import { Home, SimpleForm } from './routes'
+import { StickyFooter } from './components'
+import { Container } from '@mui/material'
 
 function App() {
   return (
@@ -14,38 +16,16 @@ function App() {
         flexDirection: 'column',
       }}
     >
-      <div>
-        <Box
-          sx={{
-            height: '400px',
-            width: '100%',
-            backgroundColor: (theme) => theme.palette.primary.light,
-            color: 'white',
-          }}
-        >
-          <Typography>Light</Typography>
-        </Box>
-        <Box
-          sx={{
-            height: '400px',
-            width: '100%',
-            backgroundColor: (theme) => theme.palette.primary.main,
-            color: 'white',
-          }}
-        >
-          Main
-        </Box>
-        <Box
-          sx={{
-            height: '400px',
-            width: '100%',
-            backgroundColor: (theme) => theme.palette.primary.dark,
-            color: 'white',
-          }}
-        >
-          dark
-        </Box>
-      </div>
+      <Container maxWidth="lg" component="main" sx={{ flexGrow: 1 }}>
+        <Switch>
+          <Route path="/simple">
+            <SimpleForm />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Container>
       <StickyFooter />
     </Box>
   )

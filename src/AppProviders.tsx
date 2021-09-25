@@ -6,6 +6,7 @@ import {
   CssBaseline,
 } from '@mui/material'
 
+import { BrowserRouter as Router } from 'react-router-dom'
 import { getLightDarkPalette, baseTheme } from './customTheme'
 
 interface AppProvidersProps {
@@ -28,7 +29,7 @@ const AppProviders = ({ children }: AppProvidersProps) => {
   return (
     <ThemeProvider theme={darkSupportedTheme}>
       <CssBaseline />
-      {children}
+      <Router>{children}</Router>
     </ThemeProvider>
   )
 }
