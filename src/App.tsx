@@ -1,25 +1,53 @@
 import React from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { StickyFooter } from './components'
+import { Box } from '@mui/system'
+import { Typography } from '@mui/material'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Box
+      sx={{
+        width: '100%',
+        height: '100vh',
+        bgcolor: 'background.default',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <div>
+        <Box
+          sx={{
+            height: '400px',
+            width: '100%',
+            backgroundColor: (theme) => theme.palette.primary.light,
+            color: 'white',
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Typography>Light</Typography>
+        </Box>
+        <Box
+          sx={{
+            height: '400px',
+            width: '100%',
+            backgroundColor: (theme) => theme.palette.primary.main,
+            color: 'white',
+          }}
+        >
+          Main
+        </Box>
+        <Box
+          sx={{
+            height: '400px',
+            width: '100%',
+            backgroundColor: (theme) => theme.palette.primary.dark,
+            color: 'white',
+          }}
+        >
+          dark
+        </Box>
+      </div>
+      <StickyFooter />
+    </Box>
   )
 }
 
