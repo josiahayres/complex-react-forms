@@ -1,7 +1,7 @@
 import { Box } from '@mui/system'
 import { Switch, Route } from 'react-router-dom'
 
-import { Home, SimpleForm } from './routes'
+import { Home, SimpleForm, FormWithSections } from './routes'
 import { StickyFooter } from './components'
 import { Container } from '@mui/material'
 
@@ -18,6 +18,9 @@ function App() {
     >
       <Container maxWidth="lg" component="main" sx={{ flexGrow: 1 }}>
         <Switch>
+          <Route path="/sections">
+            <FormWithSections />
+          </Route>
           <Route path="/simple">
             <SimpleForm />
           </Route>

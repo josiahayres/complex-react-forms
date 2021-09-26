@@ -1,15 +1,6 @@
 import { ReactElement, useState } from 'react'
 import { Box } from '@mui/system'
-import {
-  Typography,
-  Stepper,
-  Step,
-  StepLabel,
-  Button,
-  Paper,
-  Stack,
-  Card,
-} from '@mui/material'
+import { Typography, Button, Stack, Card } from '@mui/material'
 import { useForm, FormProvider } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools'
 
@@ -24,8 +15,6 @@ const schema = yup.object({
   showDevTool: yup.boolean().required(),
 })
 
-const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad']
-
 type FormData = {
   fullName: string
   email: string
@@ -36,7 +25,7 @@ const defaultFormValues: FormData = {
   email: '',
   showDevTool: true,
 }
-function SimpleForm(): ReactElement {
+function FormWithSections(): ReactElement {
   const [validatedForm, setValidatedForm] = useState<FormData | null>(null)
   const methods = useForm<FormData>({
     defaultValues: { ...defaultFormValues },
@@ -60,6 +49,7 @@ function SimpleForm(): ReactElement {
       <Typography variant="body1">
         Go to the <NavigationLink to="/">Home</NavigationLink> page
       </Typography>
+      <NavigationLink to="/simple"> Clear url parameters</NavigationLink>
       <Stack spacing={2}>
         <Card elevation={1} sx={{ p: 2 }}>
           <FormProvider {...methods}>
@@ -113,4 +103,4 @@ function SimpleForm(): ReactElement {
   )
 }
 
-export { SimpleForm }
+export { FormWithSections }

@@ -1,4 +1,4 @@
 import { Home } from './Home'
 import { SimpleForm } from './SimpleForm'
-
-export { Home, SimpleForm }
+import { FormWithSections } from './FormWithSections'
+export { Home, SimpleForm, FormWithSections }

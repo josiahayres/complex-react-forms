@@ -10,6 +10,10 @@ function Home(): ReactElement {
       <Typography variant="body1">
         Go to the <NavigationLink to="/simple">Simple Form</NavigationLink> page
       </Typography>
+      <Typography variant="body1">
+        Go to the{' '}
+        <NavigationLink to="/sections">Form with sections</NavigationLink> page
+      </Typography>
     </div>
   )
 }

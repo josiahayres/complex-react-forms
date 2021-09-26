@@ -1,7 +1,6 @@
 import React, { ReactElement, useRef } from 'react'
-import { Box } from '@mui/system'
 
-interface FormProps {
+export interface FormProps {
   children: React.ReactElement | React.ReactElement[]
   onSubmit: (e: any) => void
   preventSubmitWithCtrlEnter?: boolean
@@ -35,22 +34,21 @@ function Form({
     }
   }
   return (
-    <Box
+    <form
       ref={formRef}
-      component="form"
       noValidate
       onKeyDown={submitWithCtrlEnter}
       onSubmit={onSubmit}
     >
       {/* This hidden input prevents submitting by pressing enter */}
-      <Box
-        component="input"
+      <button
         type="submit"
         disabled
-        sx={{ display: 'hidden', visibility: 'hidden', height: 0, width: 0 }}
-      ></Box>
+        style={{ display: 'none' }}
+        aria-hidden="true"
+      ></button>
       {children}
-    </Box>
+    </form>
   )
 }
 
