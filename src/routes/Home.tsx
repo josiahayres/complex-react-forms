@@ -11,8 +11,7 @@ function Home(): ReactElement {
         Go to the <NavigationLink to="/simple">Simple Form</NavigationLink> page
       </Typography>
       <Typography variant="body1">
-        Go to the{' '}
-        <NavigationLink to="/sections">Form with sections</NavigationLink> page
+        Go to the <NavigationLink to="/a11y">a11y</NavigationLink> page
       </Typography>
     </div>
   )

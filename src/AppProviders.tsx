@@ -4,10 +4,11 @@ import {
   createTheme,
   useMediaQuery,
   CssBaseline,
+  responsiveFontSizes,
 } from '@mui/material'
 
 import { BrowserRouter as Router } from 'react-router-dom'
-import { getLightDarkPalette, baseTheme } from './customTheme'
+import { getLightDarkPalette } from './customTheme'
 
 interface AppProvidersProps {
   children: React.ReactNode
@@ -18,14 +19,9 @@ const AppProviders = ({ children }: AppProvidersProps) => {
 
   const darkSupportedTheme = React.useMemo(() => {
     const mode = prefersDarkMode ? 'dark' : 'light'
-    let colorTheme = createTheme(baseTheme, getLightDarkPalette(mode))
-    colorTheme = createTheme(colorTheme, {
-      palette: {
-        mode: prefersDarkMode ? 'dark' : 'light',
-      },
-    })
-    return colorTheme
+    return responsiveFontSizes(createTheme(getLightDarkPalette(mode)))
   }, [prefersDarkMode])
+
   return (
     <ThemeProvider theme={darkSupportedTheme}>
       <CssBaseline />

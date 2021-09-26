@@ -1,10 +1,6 @@
 import { PaletteMode } from '@mui/material'
-import { red } from '@mui/material/colors'
-import {
-  createTheme,
-  responsiveFontSizes,
-  ThemeOptions,
-} from '@mui/material/styles'
+import { grey } from '@mui/material/colors'
+import { ThemeOptions } from '@mui/material/styles'
 
 /**
  *
@@ -12,50 +8,6 @@ import {
  * @returns colours for light or dark
  */
 const getLightDarkPalette = (mode: PaletteMode): ThemeOptions => ({
-  palette: {
-    mode,
-    ...(mode === 'light'
-      ? {
-          // palette values for light mode
-          primary: {
-            main: '#2B4162',
-          },
-          secondary: {
-            main: '#07A0C3',
-          },
-          background: {
-            default: '#ECFBFE',
-            paper: '#ECFBFE',
-          },
-        }
-      : {
-          // palette values for dark mode
-          primary: {
-            main: '#8EA7CD',
-          },
-          secondary: {
-            main: '#046176',
-          },
-          error: { main: red[300] },
-          divider: '#02313C',
-          background: {
-            default: '#012128',
-            paper: '#012128',
-          },
-          text: {
-            primary: '#fff',
-            secondary: '#EBFBFE',
-          },
-        }),
-  },
-})
-
-/**
- * Base theme
- * Sets shape, typography, and responsive font sizes.
- * Also sets default props for components
- */
-let baseTheme = createTheme({
   shape: {
     borderRadius: 10,
   },
@@ -73,6 +25,61 @@ let baseTheme = createTheme({
       '"Segoe UI Symbol"',
     ].join(','),
   },
+
+  palette: {
+    mode,
+    ...(mode === 'light'
+      ? {
+          // palette values for light mode
+          palette: {
+            primary: {
+              main: '#3d678f',
+            },
+            secondary: {
+              main: '#7d7063',
+            },
+            divider: '#121D2B',
+            background: {
+              default: '#F1F5F9',
+              paper: '#edf3f8',
+            },
+            contrastThreshold: 3,
+            type: 'light',
+            error: {
+              main: '#a00505',
+            },
+            text: {
+              secondary: 'rgba(0,0,0,0.56)',
+              disabled: 'rgba(0,0,0,0.5)',
+            },
+          },
+        }
+      : {
+          // palette values for dark mode
+          primary: {
+            main: '#476785',
+          },
+          secondary: {
+            main: '#797067',
+          },
+          error: {
+            main: '#E44E5A',
+          },
+          divider: '#121D2B',
+          background: {
+            default: '#050c12',
+            paper: '#060A0E',
+          },
+          text: {
+            primary: '#f2f2f2',
+            disabled: '#757587',
+            secondary: '#cccccc',
+          },
+          contrastThreshold: 3,
+        }),
+  },
+
+  // Light override
   components: {
     MuiTextField: {
       defaultProps: {
@@ -83,12 +90,16 @@ let baseTheme = createTheme({
       styleOverrides: {
         root: {
           textTransform: 'capitalize',
+          ...(mode === 'dark' && {
+            ':disabled': {
+              color: grey[500],
+              cursor: 'not-allowed',
+            },
+          }),
         },
       },
     },
   },
 })
 
-baseTheme = responsiveFontSizes(baseTheme)
-
-export { baseTheme, getLightDarkPalette }
+export { getLightDarkPalette }
